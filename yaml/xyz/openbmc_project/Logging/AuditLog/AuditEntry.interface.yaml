@@ -1,0 +1,15 @@
+description: >
+    Implement to provide Audit Log entry attributes.
+properties:
+    - name: ID
+      type: string
+      description: Unique id for entry
+    - name: EventTimestamp
+      type: uint64
+      description: Time of entry in seconds
+    - name: MessageId
+      type: string
+      description: Message registry id
+    - name: MessageArgs
+      type: array[string]
+      description: Arguments to fill in for message

@@ -1,6 +1,31 @@
 description: >
-    This interface provides methods to extract the Linux audit logged events.
+    This interface provides methods to add user space events to the Linux audit
+    log and to extract the Linux audit logged events.
+enumerations:
+    - name: Result
+      description: >
+          Result of operation being logged.
+      values:
+          - name: Success
+            description: >
+                Operation completed successfully.
+          - name: Fail
+            description: >
+                Operation failed to complete.
 methods:
+    - name: PopulateAuditLog
+      description: >
+          Parses previously recorded log events into JSON format. Nothing is
+          returned to caller. It will write them as individual entries on the
+          DBus. This is a WIP for comparing file approach to DBus approach.
+          SHOULD NOT BE MERGED.
+      parameters:
+          - name: maxCount
+            type: uint32
+            description: >
+                Defines the maximum number of entries to parse. Minimum value is
+                0.
+
     - name: GetAuditLog
       description: >
           Parses all previously recorded log events into JSON format. Returns a
@@ -24,7 +49,7 @@ methods:
       parameters:
           - name: maxCount
             type: uint32
-            description:
+            description: >
                 Defines the maximum number of entries to return. Minimum value
                 is 0.
       returns:
